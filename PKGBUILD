@@ -3,7 +3,7 @@
 # Contributor: David Anderson <dave@natulte.net>
 
 pkgname=tailscale
-pkgver=1.48.2
+pkgver=1.50.0
 pkgrel=1
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
@@ -14,11 +14,9 @@ depends=("glibc")
 backup=("etc/default/tailscaled")
 # Important: Check if the version has been published before updating
 # curl -s "https://pkgs.tailscale.com/stable/?mode=json"
-_commit=a6bcfd69149c491d7542cc758b762bae8882db04 #  git rev-parse tags/v1.48.2
-source=("git+https://github.com/tailscale/tailscale.git#commit=${_commit}"
-        "tailscale_1.48.2_no-self-update.patch")
-sha256sums=('SKIP'
-            '33105b1986b3b77924fbc3f34f219a67a6cc3846d7411a2165b48af1c616175e')
+_commit=a920f02311d00d9bf8ba09503ec78fe6b054ca75 #  git rev-parse tags/v1.50.0
+source=("git+https://github.com/tailscale/tailscale.git#commit=${_commit}")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
@@ -27,9 +25,6 @@ pkgver() {
 
 prepare() {
     cd "${pkgname}"
-    # disable the autoupdate feature, see https://github.com/tailscale/tailscale/pull/8655#discussion_r1300682857
-    # can be removed with the next major release
-    patch --forward --strip=1 --input="${srcdir}/tailscale_1.48.2_no-self-update.patch"
     go mod vendor
 }
 
