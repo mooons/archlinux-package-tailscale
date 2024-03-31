@@ -4,7 +4,7 @@
 
 pkgname=tailscale
 pkgver=1.62.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
 url="https://tailscale.com"
